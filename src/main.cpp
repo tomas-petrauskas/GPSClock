@@ -21,20 +21,19 @@ Timezone timeZone(SummerTime, WinterTime);
 
 // -------------------------------------------------------------------- //
 
-//pins definitions for TM1637 and can be changed to other ports
+// GPS Module
+NMEAGPS gps;
+gps_fix fix;
+uint8_t awayCount = 100;
+NeoSWSerial serialgps(10,11);
+
+// Display Module
 #define CLK 9
 #define DIO 8
 uint8_t displayData[] = { 0xff, 0xff, 0xff, 0xff };
 uint8_t displayDataAllSegments[] = { 0xff, 0xff, 0xff, 0xff };
 TM1637Display display(CLK, DIO);
 
-// GPS and Serial
-NMEAGPS gps;
-gps_fix fix;  // all GPS fields, including date/time, location, etc.
-uint8_t awayCount = 100;
-NeoSWSerial serialgps(10,11);
-
-// Display
 int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};
 bool SeparatorSymbolValue = true;
 unsigned char displayMinute = 88;
